@@ -65,6 +65,28 @@ async function main() {
     { id }
   );
 
+  await stage(
+    "6. OPTIONAL MATCH existing friendship, no filter yet",
+    `MATCH (me:Person {id: $id})-[:KNOWS]->(mutual:Person)-[:KNOWS]->(candidate:Person)
+     WHERE candidate <> me
+     WITH me, candidate, collect(DISTINCT mutual) AS mutualFriends, count(DISTINCT mutual) AS mutualCount
+     OPTIONAL MATCH (me)-[existing:KNOWS]->(candidate)
+     RETURN candidate.name, mutualCount, existing IS NULL AS isNewCandidate`,
+    { id }
+  );
+
+  await stage(
+    "7. Same, filtered to isNewCandidate = true",
+    `MATCH (me:Person {id: $id})-[:KNOWS]->(mutual:Person)-[:KNOWS]->(candidate:Person)
+     WHERE candidate <> me
+     WITH me, candidate, collect(DISTINCT mutual) AS mutualFriends, count(DISTINCT mutual) AS mutualCount
+     OPTIONAL MATCH (me)-[existing:KNOWS]->(candidate)
+     WITH me, candidate, mutualFriends, mutualCount, existing
+     WHERE existing IS NULL
+     RETURN candidate.name, mutualCount`,
+    { id }
+  );
+
   await driver.close();
 }
 
