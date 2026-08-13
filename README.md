@@ -179,8 +179,8 @@ particular runtime. For a free option:
 
 ## Screenshots
 
-_Add screenshots of the home page, a profile page, and the "how are we
-connected" tool here once you're running against your live instance._
+![Home page](screenshots/home.png)
+![Profile & Connection page](screenshots/profile.png)
 
 ## Notes on error handling
 
