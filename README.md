@@ -182,7 +182,7 @@ particular runtime. For a free option:
 - Home Page
 ![Home page](screenshots/home.png)
 
-Profile & Connections
+- Profile & Connections
 ![Profile & Connections page](screenshots/profile.png)
 
 - Connection Path
