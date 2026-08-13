@@ -179,8 +179,15 @@ particular runtime. For a free option:
 
 ## Screenshots
 
+- Home Page
 ![Home page](screenshots/home.png)
-![Profile & Connection page](screenshots/profile.png)
+
+Profile & Connections
+![Profile & Connections page](screenshots/profile.png)
+
+- Connection Path
+![Connection Path](screenshots/path.png)
+
 
 ## Notes on error handling
 
